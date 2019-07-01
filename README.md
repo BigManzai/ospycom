@@ -1,14 +1,26 @@
 # ospycom
-OpenSim OpenSimulator: Python send command to OpenSim screen
+OpenSim OpenSimulator: Python send command to OpenSim Linux screen
 
-OpenSim Python send command to screen
+OpenSim Python send command to Linux screen
 
 function:
+
+ospycom.py "User" "Password" "command" "Parameters"
+
 ./ospycom.py "test" "test123" "alert" "Hello World"
 
+ospycom.ini
+
+     User = test
+     Password = test123
+     Screenname = OS
+
 files:
+
 ospycom.py ospycom.ini ospycommands.txt
 
+
+### Info
 Copyright (c) Manfred Aabye
 
 THIS SOFTWARE IS PROVIDED BY THE DEVELOPERS ``AS IS'' AND ANY
