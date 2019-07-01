@@ -1,0 +1,236 @@
+# OpenSim Python send command to screen
+# function:
+# ./ospycom.py "test" "test123" "alert" "Hello World"
+# files:
+# ospycom.py ospycom.ini ospycommands.txt
+
+# THIS SOFTWARE IS PROVIDED BY THE DEVELOPERS ``AS IS'' AND ANY
+# EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE CONTRIBUTORS BE LIABLE FOR ANY
+# DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+alert <message> - Send an alert to everyone
+alert-user <first> <last> <message> - Send an alert to a user
+appearance find <uuid-or-start-of-uuid> - Find out which avatar uses the given asset as a baked texture, if any.
+appearance rebake <first-name> <last-name> - Send a request to the user's viewer for it to rebake and reupload its appearance textures.
+appearance send [<first-name> <last-name>] - Send appearance data for each avatar in the simulator to other viewers.
+appearance show [<first-name> <last-name>] - Show appearance information for avatars.
+attachments show [<first-name> <last-name>] - Show attachment information for avatars in this simulator.
+backup - Persist currently unsaved object changes immediately instead of waiting for the normal persistence call.
+bypass permissions <true / false> - Bypass permission checks
+change region <region name> - Change current console region
+clear image queues <first-name> <last-name> - Clear the image queues (textures downloaded via UDP) for a particular client.
+command-script <script> - Run a command script from file
+config get [<section>] [<key>] - Synonym for config show
+config save <path> - Save current configuration to a file at the given path
+config set <section> <key> <value> - Set a config option.  In most cases this is not useful since changed parameters are not dynamically reloaded.  Neither do changed parameters persist - you will have to change a config file manually and restart.
+config show [<section>] [<key>] - Show config information
+create region ["region name"] <region_file.ini> - Create a new region.
+debug attachments log [0|1] - Turn on attachments debug logging
+debug attachments status - Show current attachments debug status
+debug eq [0|1|2] - Turn on event queue debugging
+  <= 0 - turns off all event queue logging
+  >= 1 - turns on event queue setup and outgoing event logging
+  >= 2 - turns on poll notification
+debug groups messaging verbose <true|false> - This setting turns on very verbose groups messaging debugging
+debug groups verbose <true|false> - This setting turns on very verbose groups debugging
+debug http <in|out|all> [<level>] - Turn on http request logging.
+debug jobengine <start|stop|status|log> - Start, stop, get status or set logging level of the job engine.
+debug permissions <true / false> - Turn on permissions debugging
+debug scene get - List current scene options.
+debug scene set <param> <value> - Turn on scene debugging options.
+debug scripts log <item-id> <log-level> - Extra debug logging for a particular script.
+debug threadpool level 0..3 - Turn on logging of activity in the main thread pool.
+debug threadpool set worker|iocp min|max <n> - Set threadpool parameters.  For debug purposes.
+debug threadpool status - Show current debug threadpool parameters.
+debug xengine log [<level>] - Turn on detailed xengine debugging.
+delete object creator <UUID> - Delete scene objects by creator
+delete object id <UUID-or-localID> - Delete a scene object by uuid or localID
+delete object name [--regex] <name> - Delete a scene object by name.
+delete object outside - Delete all scene objects outside region boundaries
+delete object owner <UUID> - Delete scene objects by owner
+delete object pos <start x, start y , start z> <end x, end y, end z> - Delete scene objects within the given volume.
+delete-region <name> - Delete a region from disk
+dump asset <id> - Dump an asset
+dump object id <UUID-or-localID> - Dump the formatted serialization of the given object to the file <UUID>.xml
+edit scale <name> <x> <y> <z> - Change the scale of a named prim
+estate create <owner UUID> <estate name> - Creates a new estate with the specified name, owned by the specified user. Estate name must be unique.
+estate link region <estate ID> <region ID> - Attaches the specified region to the specified estate.
+estate set name <estate-id> <new name> - Sets the name of the specified estate to the specified value. New name must be unique.
+estate set owner <estate-id>[ <UUID> | <Firstname> <Lastname> ] - Sets the owner of the specified estate to the specified UUID or user.
+estate show - Shows all estates on the simulator.
+export-map [<path>] - Save an image of the world map
+fcache assets - Attempt a deep scan and cache of all assets in all scenes
+fcache clear [file] [memory] - Remove all assets in the cache.  If file or memory is specified then only this cache is cleared.
+fcache expire <datetime> - Purge cached assets older then the specified date/time
+fcache status - Display cache status
+force gc - Manually invoke runtime garbage collection.  For debugging purposes
+force permissions <true / false> - Force permissions on or off
+force update - Force the update of all objects on clients
+friends show [--cache] <first-name> <last-name> - Show the friends for the given user if they exist.
+generate map - Generates and stores a new maptile.
+get log level - Get the current console logging level
+help [<item>] - Display help on a particular command or on a list of commands in a category
+help Terrain - Get help on plugin command 'terrain'
+help Terrain - Get help on plugin command 'terrain'
+help Tree - Get help on plugin command 'tree'
+help Tree - Get help on plugin command 'tree'
+help Windlight - Get help on plugin command 'windlight'
+help Windlight - Get help on plugin command 'windlight'
+j2k decode <ID> - Do JPEG2000 decoding of an asset.
+kick user <first> <last> [--force] [message] - Kick a user off the simulator
+land clear - Clear all the parcels from the region.
+land show [<local-land-id>] - Show information about the parcels on the region.
+link-mapping [<x> <y>] - Set local coordinate to map HG regions to
+link-region <Xloc> <Yloc> <ServerURI> [<RemoteRegionName>] - Link a HyperGrid Region. Examples for <ServerURI>: http://grid.net:8002/ or http://example.org/path/foo.php
+load iar [-m|--merge] <first> <last> <inventory path> <password> [<IAR path>] - Load user inventory archive (IAR).
+load oar [-m|--merge] [-s|--skip-assets] [--default-user "User Name"] [--force-terrain] [--force-parcels] [--no-objects] [--rotation degrees] [--bounding-origin "<x,y,z>"] [--bounding-size "<x,y,z>"] [--displacement "<x,y,z>"] [-d|--debug] [<OAR path>] - Load a region's data from an OAR archive.
+load xml [<file name> [-newUID [<x> <y> <z>]]] - Load a region's data from XML format
+load xml2 [<file name>] - Load a region's data from XML2 format
+login disable - Disable simulator logins
+login enable - Enable simulator logins
+login status - Show login status
+monitor report - Returns a variety of statistics about the current region and/or simulator
+physics get [<param>|ALL] - Get physics parameter from currently selected region
+physics list - List settable physics parameters
+physics set <param> [<value>|TRUE|FALSE] [localID|ALL] - Set physics parameter from currently selected region
+quit - Quit the application
+region get - Show control information for the currently selected region (host name, max physical prim size, etc).
+region restart abort [<message>] - Abort a region restart
+region restart bluebox <message> <delta seconds>+ - Schedule a region restart
+region restart notice <message> <delta seconds>+ - Schedule a region restart
+region set - Set control information for the currently selected region.
+remove-region <name> - Remove a region from this simulator
+reset user cache - reset user cache to allow changed settings to be applied
+restart - Restart the currently selected region(s) in this instance
+rotate scene <degrees> [centerX, centerY] - Rotates all scene objects around centerX, centerY (default 128, 128) (please back up your region before using)
+save iar [-h|--home=<url>] [--noassets] <first> <last> <inventory path> <password> [<IAR path>] [-c|--creators] [-e|--exclude=<name/uuid>] [-f|--excludefolder=<foldername/uuid>] [-v|--verbose] - Save user inventory archive (IAR).
+save oar [-h|--home=<url>] [--noassets] [--publish] [--perm=<permissions>] [--all] [<OAR path>] - Save a region's data to an OAR archive.
+save prims xml2 [<prim name> <file name>] - Save named prim to XML2
+save xml [<file name>] - Save a region's data in XML format
+save xml2 [<file name>] - Save a region's data in XML2 format
+scale scene <factor> - Scales the scene objects (please back up your region before using)
+scripts resume [<script-item-uuid>+] - Resumes all suspended scripts
+scripts show [<script-item-uuid>+] - Show script information
+scripts start [<script-item-uuid>+] - Starts all stopped scripts
+scripts stop [<script-item-uuid>+] - Stops all running scripts
+scripts suspend [<script-item-uuid>+] - Suspends all running scripts
+set log level <level> - Set the console logging level for this session.
+set terrain heights <corner> <min> <max> [<x>] [<y>] - Sets the terrain texture heights on corner #<corner> to <min>/<max>, if <x> or <y> are specified, it will only set it on regions with a matching coordinate. Specify -1 in <x> or <y> to wildcard that coordinate. Corner # SW = 0, NW = 1, SE = 2, NE = 3, all corners = -1.
+set terrain texture <number> <uuid> [<x>] [<y>] - Sets the terrain <number> to <uuid>, if <x> or <y> are specified, it will only set it on regions with a matching coordinate. Specify -1 in <x> or <y> to wildcard that coordinate.
+set water height <height> [<x>] [<y>] - Sets the water height in meters.  If <x> and <y> are specified, it will only set it on regions with a matching coordinate. Specify -1 in <x> or <y> to wildcard that coordinate.
+show animations [<first-name> <last-name>] - Show animation information for avatars in this simulator.
+show appearance [<first-name> <last-name>] - Synonym for 'appearance show'
+show asset <ID> - Show asset information
+show caps list - Shows list of registered capabilities for users.
+show caps stats by cap [<cap-name>] - Shows statistics on capabilities use by capability.
+show caps stats by user [<first-name> <last-name>] - Shows statistics on capabilities use by user.
+show checks - Show checks configured for this server
+show circuits - Show agent circuit data
+show connections - Show connection data
+show eq - Show contents of event queues for logged in avatars.  Used for debugging.
+show http-handlers - Show all registered http handlers
+show hyperlinks - List the HG regions
+show image queues <first-name> <last-name> - Show the image queues (textures downloaded via UDP) for a particular client.
+show info - Show general information about the server
+show modules - Show module data
+show name <uuid> - Show the bindings between a single user UUID and a user name
+show names - Show the bindings between user UUIDs and user names
+show neighbours - Shows the local region neighbours
+show object id [--full] <UUID-or-localID> - Show details of a scene object with the given UUID or localID
+show object name [--full] [--regex] <name> - Show details of scene objects with the given name.
+show object owner [--full] <OwnerID> - Show details of scene objects with given owner.
+show object pos [--full] <start x, start y , start z> <end x, end y, end z> - Show details of scene objects within give volume
+show part id <UUID-or-localID> - Show details of a scene object part with the given UUID or localID
+show part name [--regex] <name> - Show details of scene object parts with the given name.
+show part pos <start x, start y , start z> <end x, end y, end z> - Show details of scene object parts within the given volume.
+show pending-objects - Show # of objects on the pending queues of all scene viewers
+show pqueues [full] - Show priority queue data for each client
+show queues [full] - Show queue data for each client
+show ratings - Show rating data
+show region - Show control information for the currently selected region (host name, max physical prim size, etc).
+show regions - Show region data
+show regionsinview - Shows regions that can be seen from a region
+show scene - Show live information for the currently selected scene (fps, prims, etc.).
+show script sensors - Show script sensors information
+show script timers - Show script sensors information
+show scripts [<script-item-uuid>+] - Show script information
+show stats [list|all|(<category>[.<container>])+ - Alias for 'stats show' command
+show threadpool calls complete - Show details about threadpool calls that have been completed.
+show threads - Show thread status
+show throttles [full] - Show throttle settings for each client and for the server overall
+show uptime - Show server uptime
+show users [full] - Show user data for users currently on the region
+show version - Show server version
+shutdown - Quit the application
+sit user name [--regex] <first-name> <last-name> - Sit the named user on an unoccupied object with a sit target.
+stand user name [--regex] <first-name> <last-name> - Stand the named user.
+stats record start|stop - Control whether stats are being regularly recorded to a separate file.
+stats save <path> - Save stats snapshot to a file.  If the file already exists, then the report is appended.
+stats show [list|all|(<category>[.<container>])+ - Show statistical information for this server
+sun current_time [<value>] - time in seconds of the simulator
+sun day_length [<value>] - number of hours to a day
+sun day_night_offset [<value>] - induces a horizon shift
+sun day_time_sun_hour_scale [<value>] - scales day light vs nite hours to change day/night ratio
+sun help - list parameters that can be changed
+sun list - list parameters that can be changed
+sun update_interval [<value>] - how often to update the sun's position in frames
+sun year_length [<value>] - number of days to a year
+teleport user <first-name> <last-name> <destination> - Teleport a user in this simulator to the given destination
+terrain bake -
+terrain effect <name> -
+terrain elevate <amount> -
+terrain fill <value> -
+terrain flip <direction> -
+terrain load <filename> -
+terrain load-tile <filename> <file width> <file height> <minimum X tile> <minimum Y tile> -
+terrain lower <amount> -
+terrain max <min> -
+terrain min <min> -
+terrain modify <operation> <value> [<area>] [<taper>] - Modifies the terrain as instructed.
+Each operation can be limited to an area of effect:
+ * -ell=x,y,rx[,ry] constrains the operation to an ellipse centred at x,y
+ * -rec=x,y,dx[,dy] constrains the operation to a rectangle based at x,y
+Each operation can have its effect tapered based on distance from centre:
+ * elliptical operations taper as cones
+ * rectangular operations taper as pyramids
+terrain multiply <value> -
+terrain newbrushes <Enabled?> -
+terrain rescale <min> <max> -
+terrain revert -
+terrain save <filename> -
+terrain save-tile <filename> <file width> <file height> <minimum X tile> <minimum Y tile> -
+terrain show <point> -
+terrain stats -
+threads abort <thread-id> - Abort a managed thread.  Use "show threads" to find possible threads.
+threads show - Show thread status.  Synonym for "show threads"
+translate scene xOffset yOffset zOffset - translates the scene objects (please back up your region before using)
+tree active <activeTF> -
+tree freeze <copse> <freezeTF> -
+tree load <filename> -
+tree plant <copse> -
+tree rate <updateRate> -
+tree reload -
+tree remove <copse> -
+tree statistics -
+unlink-region <local name> - Unlink a hypergrid region
+vivox debug <on>|<off> - Set vivox debugging
+wearables check <first-name> <last-name> - Check that the wearables of a given avatar in the scene are valid.
+wearables show [<first-name> <last-name>] - Show information about wearables for avatars.
+wind base wind_update_rate [<value>] - Get or set the wind update rate.
+wind ConfigurableWind avgDirection [<value>] - average wind direction in degrees
+wind ConfigurableWind avgStrength [<value>] - average wind strength
+wind ConfigurableWind rateChange [<value>] - rate of change
+wind ConfigurableWind varDirection [<value>] - allowable variance in wind direction in +/- degrees
+wind ConfigurableWind varStrength [<value>] - allowable variance in wind strength
+wind SimpleRandomWind strength [<value>] - wind strength
+windlight disable -
+windlight enable -
+windlight load -
+xengine status - Show status information
